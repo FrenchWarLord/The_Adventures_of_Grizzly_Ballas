@@ -1,4 +1,4 @@
-from The_Adventures_of_Grizzly_Ballas.grizzly import Game
+from grizzly import Game
 import arcade
 
 
