@@ -43,8 +43,6 @@ class Player:
 
     def draw(self):
         """Creates player"""
-        if EPILEPSY: self.color = choice(COLORS)
-        
         ar.draw_xywh_rectangle_filled(
             self.x, self.y, self.width, self.height, self.color
         )
@@ -56,7 +54,7 @@ class Player:
 
         mode: 'press' or 'release'
         """
-        def key_press(self, key, modifier):
+        def press(self, key, modifier):
             """Key pressed down"""
             # Start movement
             if key == ar.key.LSHIFT: self.speed *= self.speed_modifier
@@ -67,7 +65,7 @@ class Player:
             if key == ar.key.W: self.up = True
             if key == ar.key.S: self.down = True
 
-        def key_release(self, key, modifier):
+        def release(self, key, modifier):
             """Key let go of"""
             # End movement
             if key == ar.key.LSHIFT: self.speed = PLAYER_SPEED
@@ -78,9 +76,9 @@ class Player:
             if key == ar.key.W: self.up = False
             if key == ar.key.S: self.down = False
         
-        if mode == "press":
-            key_press(self, key, modifier)
-        if mode == "release":
-            key_release(self, key, modifier)
+        if mode == "press": 
+            press(self, key, modifier)
+        if mode == "release": 
+            release(self, key, modifier)
 
 
