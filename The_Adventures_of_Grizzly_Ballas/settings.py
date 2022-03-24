@@ -24,6 +24,11 @@ COLORS = [
     GREEN,
 ]
 
+# Key modifiers
+L_SHIFT = 1
+L_ALT = 4
+
+
 
 # Game Window
 

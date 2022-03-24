@@ -4,26 +4,39 @@ from random import choice, randrange
 # File imports
 from settings import *
 
+ar.Sprite
 
-class Player:
-    def __init__(self):
+class Sprite:
+    alive = True
+    def __init__(
+        self,
+        width=0,
+        height=0,
+        color=BLACK,
+        x=0, y=0,
+        speed=0,
+        speed_mod=1
+        ):
+
+        self.width = width
+        self.height = height
+        self.color = color
+        self.x = x
+        self.y = y
+        self.speed = speed
+        self.speed_mod = speed_mod
+
+    def die(self):
+        pass
+
+class Player(ar.Sprite):
+    def __init__(self, width, height, color, x, y, speed, speed_mod):
         """Initilize player stats"""
-        self.width = 100
-        self.height = 100
-
-        self.color = RED
-
-        self.x = 300
-        self.y = 300
-
-        self.speed = PLAYER_SPEED
-        self.speed_modifier = PLAYER_SPEED_MODIFIER
-
+        super().__init__(width, height, color, x, y, speed, speed_mod)
         self.left = False
         self.right = False
         self.up = False
         self.down = False
-        self.player_sprite_list = ar.SpriteList()
 
     def update(self, delta_time):
         """"""
@@ -54,23 +67,21 @@ class Player:
 
         mode: 'press' or 'release'
         """
-        def press(self, key, modifier):
+        def press(self, key, mod):
             """Key pressed down"""
             # Start movement
-            if key == ar.key.LSHIFT: self.speed *= self.speed_modifier
-            if key == ar.key.LALT:   self.speed /= self.speed_modifier
-
+            if key == ar.key.LSHIFT: self.speed *= self.speed_mod
+            if key == ar.key.LALT:   self.speed /= self.speed_mod
             if key == ar.key.D: self.right = True
             if key == ar.key.A: self.left = True
             if key == ar.key.W: self.up = True
             if key == ar.key.S: self.down = True
 
-        def release(self, key, modifier):
+        def release(self, key, mod):
             """Key let go of"""
             # End movement
             if key == ar.key.LSHIFT: self.speed = PLAYER_SPEED
-            if key == ar.key.LALT:   self.speed = PLAYER_SPEED
-
+            if mod == ar.key.LALT:   self.speed = PLAYER_SPEED
             if key == ar.key.D: self.right = False
             if key == ar.key.A: self.left = False
             if key == ar.key.W: self.up = False
