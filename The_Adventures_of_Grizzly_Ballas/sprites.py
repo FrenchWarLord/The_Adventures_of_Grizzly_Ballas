@@ -4,7 +4,6 @@ from random import choice, randrange
 # File imports
 from settings import *
 
-ar.Sprite
 
 class Sprite:
     alive = True
