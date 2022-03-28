@@ -28,7 +28,7 @@ class Sprite:
     def die(self):
         pass
 
-class Player:
+class Player(Sprite):
     def __init__(self, width, height, color, x, y, speed, speed_mod):
         """Initilize player stats"""
         super().__init__(width, height, color, x, y, speed, speed_mod)
