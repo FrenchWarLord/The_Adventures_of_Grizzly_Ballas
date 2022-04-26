@@ -91,5 +91,14 @@ class Player(Sprite):
             press(self, key, modifier)
         if mode == "release": 
             release(self, key, modifier)
+'''           
+    def create_player(self):
+        
+        self.player_sprite = Player()
+        
+        self.player_list = ar.SpriteList()
+        
+        self.player_sprite = ar.Sprite()
+'''
 
 
